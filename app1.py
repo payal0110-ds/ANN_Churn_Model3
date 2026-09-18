@@ -71,4 +71,8 @@ st.write("Scaler mean:", scaler.mean_[:3])
 st.write("Scaled input:", input_data_scaled)
 st.write("Raw prediction value:", prediction_proba)
 
-st.write("Weight sum:", np.sum(model.get_weights()[0]))
+for i, w in enumerate(model.get_weights()):
+    st.write(f"Layer param {i} — shape {w.shape}, sum: {np.sum(w):.6f}")
+
+raw_output = model(input_data_scaled, training=False)
+st.write("Manual forward pass:", raw_output.numpy())
