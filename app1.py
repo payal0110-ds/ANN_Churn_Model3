@@ -68,7 +68,6 @@ else:
     st.write('The customer is not likely to churn.')
 
 st.write("TF version:", tf.__version__)
-st.write("Keras version:", tf.keras.__version__)
 st.write("Mixed precision policy:", tf.keras.mixed_precision.global_policy())
 st.write("Model dtype policy:", model.dtype_policy)
 
