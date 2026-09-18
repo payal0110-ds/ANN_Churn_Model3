@@ -66,3 +66,12 @@ if prediction_proba > 0.5:
     st.write('The customer is likely to churn.')
 else:
     st.write('The customer is not likely to churn.')
+
+st.write("TF version:", tf.__version__)
+st.write("Keras version:", tf.keras.__version__)
+st.write("Mixed precision policy:", tf.keras.mixed_precision.global_policy())
+st.write("Model dtype policy:", model.dtype_policy)
+
+# Force float32 explicitly and retry
+x32 = tf.cast(input_data_scaled, tf.float32)
+st.write("Forced float32 prediction:", model.predict(x32))
