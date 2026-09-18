@@ -53,6 +53,8 @@ input_data = pd.concat([input_data.reset_index(drop=True),geo_encoded_df],axis=1
 # Scale the input data
 input_data_scaled = scaler.transform(input_data)
 
+st.write("Input fed to real predict call:", input_data_scaled.tolist())
+
 # Predict churn
 prediction = model.predict(input_data_scaled)
 prediction_proba=prediction[0][0]
@@ -64,15 +66,3 @@ if prediction_proba > 0.5:
     st.write('The customer is likely to churn.')
 else:
     st.write('The customer is not likely to churn.')
-
-st.write("Model input shape:", model.input_shape)
-st.write("Weight sum:", np.sum(model.get_weights()[0]))
-st.write("Scaler mean:", scaler.mean_[:3])
-st.write("Scaled input:", input_data_scaled)
-st.write("Raw prediction value:", prediction_proba)
-
-for i, w in enumerate(model.get_weights()):
-    st.write(f"Layer param {i} — shape {w.shape}, sum: {np.sum(w):.6f}")
-
-raw_output = model(input_data_scaled, training=False)
-st.write("Manual forward pass:", raw_output.numpy())
