@@ -70,3 +70,5 @@ st.write("Weight sum:", np.sum(model.get_weights()[0]))
 st.write("Scaler mean:", scaler.mean_[:3])
 st.write("Scaled input:", input_data_scaled)
 st.write("Raw prediction value:", prediction_proba)
+
+st.write("Weight sum:", np.sum(model.get_weights()[0]))
